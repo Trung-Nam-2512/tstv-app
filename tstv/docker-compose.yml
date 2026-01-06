@@ -1,0 +1,67 @@
+services:
+  # Frontend with Nginx
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: tstv_frontend
+    ports:
+      - "3143:3143"
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - tstv_network
+
+  # FastAPI Application
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tstv_api
+    # Không expose port ra ngoài, chỉ dùng trong Docker network
+    expose:
+      - "3144"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - ALLOW_ORIGINS=${ALLOW_ORIGINS:-*}
+      - RAINFALL_API_URL=${RAINFALL_API_URL:-https://quantrac.baonamdts.com}
+    volumes:
+      - ./app:/app/app
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - tstv_network
+
+  # MongoDB Database
+  mongo:
+    image: mongo:7.0
+    container_name: tstv_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - mongo_config:/data/configdb
+    restart: unless-stopped
+    networks:
+      - tstv_network
+    environment:
+      - MONGO_INITDB_DATABASE=visits_db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+volumes:
+  mongo_data:
+    driver: local
+  mongo_config:
+    driver: local
+
+networks:
+  tstv_network:
+    driver: bridge

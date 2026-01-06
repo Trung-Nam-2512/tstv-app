@@ -1,0 +1,74 @@
+.manualInput {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.manualInput .wtHolder {
+    width: 100%;
+}
+
+.manualInput button {
+
+    background-color: #d4e0d4;
+    margin: 15px 0 100px 70px;
+}
+
+.year-inputs input {
+
+    height: 30px;
+    margin: 15px 0;
+    width: 150px;
+}
+
+.year-inputs {
+    margin-top: 100px;
+    height: 290px;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    /* background-color: #F9F9F9; */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1),
+
+}
+
+.year-inputs>label {
+    gap: 20px;
+    display: block;
+    margin-left: 80px;
+}
+
+.year-inputs label:first-of-type {
+    margin-top: 10px;
+}
+
+.handsontable {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+.ht_master thead th {
+    background-color: #343a40;
+    color: #fff;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.ht_master tbody td {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.ht_master tbody td:hover {
+    background-color: #f5f5f5;
+}
+
+/* .handsontable-container {
+    max-height: auto;
+    overflow-y: auto;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+} */

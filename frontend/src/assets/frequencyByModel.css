@@ -1,0 +1,99 @@
+.frequency-container {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+
+}
+
+.frequency-table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 50px auto;
+}
+
+.frequency-table th,
+.frequency-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.frequency-table th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+
+}
+
+
+
+.frequency-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.frequency-container {
+    width: 80%;
+    margin: 0 auto 50px auto;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.frequency-container h2 {
+    color: #007bff;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+@media (min-width: 1920px) {
+    .frequency-container>h2 {
+        margin-top: 80px !important;
+    }
+
+}
+
+.frequency-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.frequency-table th,
+.frequency-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.frequency-table th {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.frequency-table tbody tr:nth-child(odd) {
+    background: #f2f2f2;
+}
+
+.frequency-table tbody tr:hover {
+    background: #c5def8;
+    transform: scale(1.02);
+    transition: 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .frequency-container {
+        width: 95%;
+    }
+
+    .frequency-table th,
+    .frequency-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+}

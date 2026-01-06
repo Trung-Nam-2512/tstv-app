@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "antd": "^6.1.0",
+    "mapbox-gl": "^3.17.0",
+    "react-map-gl": "^8.1.0"
+  }
+}

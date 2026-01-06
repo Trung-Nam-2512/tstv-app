@@ -1,0 +1,112 @@
+.app-footer {
+    background-color: #0077b6;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+.app-footer hr {
+    color: #fff;
+    border-top: 2px solid #fff;
+    opacity: 0.5;
+}
+
+.footer-section {
+    padding: 10px;
+}
+
+.footer-logo {
+    display: flex;
+}
+
+.footer-logo>h5 {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.footer-logo img {
+    max-height: 70px;
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+.footer-intro,
+.footer-contact,
+.footer-copyright,
+.footer-version {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+
+}
+
+.footer-copyright {
+    margin-top: 80px;
+}
+
+.footer-quick-link-title {
+    color: white;
+    margin-top: 80px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-social {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    color: white;
+}
+
+.footer-social a:hover svg {
+    color: #ffcc00;
+    transform: scale(1.2);
+}
+
+
+.footer-social svg {
+    font-size: 25px;
+}
+
+.footer-language {
+    margin-top: 20px;
+}
+
+.footer-language select {
+    background-color: #343a40;
+    color: white;
+    border: 1px solid white;
+}
+
+.footer-visits {
+    font-size: 13px;
+    margin: 0;
+    padding: 1px;
+}
+
+.footer-industry {
+    margin-top: 5px;
+}
+
+.footer-address {
+    margin-top: 20px;
+}

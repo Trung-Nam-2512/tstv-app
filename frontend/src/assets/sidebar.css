@@ -1,0 +1,302 @@
+/* sidebar.css */
+.sidebar-nav {
+    width: 100%;
+    margin-top: 40px;
+
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    /* gap: 50px; */
+}
+
+.sidebar-link:hover {
+    background-color: #e9ecef;
+    color: black;
+}
+
+.sidebar-link.active {
+    background-color: #b5cbe3;
+    color: white;
+}
+
+.sidebar-group-title {
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    gap: 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sidebar-group-dropdown {
+    font-size: 20px;
+    padding: 20px 15px;
+
+}
+
+.sidebar-group-title:hover {
+    background-color: #e9ecef;
+}
+
+.sidebar-group-dropdown {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    gap: 20px;
+
+}
+
+.sidebar-group-dropdown:hover {
+    background-color: #e9ecef;
+}
+
+.sidebar-sublinks-dropdown {
+    font-size: 16px;
+    padding: 15px 0 10px 30px;
+    margin-top: -15px;
+    font-weight: bold;
+
+}
+
+
+.sidebar-data-links {
+    font-size: 16px;
+    padding: 15px 0 10px 30px;
+    font-weight: bold;
+    margin-top: -15px;
+}
+
+/* sidebar.css */
+.app-sidebar {
+    border-right: 1px solid #4788c9;
+    padding: 20px;
+    background-color: rgb(203, 226, 245);
+    border-radius: 5px;
+    position: relative;
+    /* Thêm position: relative */
+    transition: left 0.3s ease;
+    /* Thêm transition */
+    left: 0;
+    /* Sidebar mặc định ở vị trí bên trái */
+}
+
+.app-sidebar.open {
+    left: 0;
+    /* Khi sidebar mở, vẫn ở vị trí bên trái */
+}
+
+/* Media query cho màn hình nhỏ */
+@media (max-width: 1024px) {
+    .app-sidebar {
+        position: fixed;
+        /* Chuyển sang position: fixed */
+        top: 15vh;
+        /* Đặt top bằng chiều cao của navbar */
+        left: -100%;
+        /* Ẩn sidebar ra khỏi màn hình */
+        width: 80%;
+        /* Chiều rộng của sidebar */
+        height: calc(100vh - 15vh);
+        /* Chiều cao của sidebar */
+        z-index: 101;
+        /* Đảm bảo sidebar nằm trên nội dung chính */
+        overflow-y: auto;
+        /* Cho phép cuộn dọc nếu nội dung quá dài */
+    }
+
+    .app-sidebar.open {
+        left: 0;
+        /* Khi sidebar mở, hiển thị sidebar */
+    }
+}
+
+/* Sidebar Close Button for Mobile */
+.sidebar-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #667eea;
+    font-size: 1.2rem;
+    z-index: 1001;
+}
+
+.sidebar-close-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: scale(1.1);
+    color: #764ba2;
+}
+
+/* Hide close button on desktop */
+@media (min-width: 1400px) {
+    .sidebar-close-btn {
+        display: none;
+    }
+}
+
+/* Toggle sidebar button for desktop */
+.sidebar-toggle-desktop {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.sidebar-toggle-desktop:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: scale(1.1);
+}
+
+.sidebar-toggle-desktop:active {
+    transform: scale(0.95);
+}
+
+/* Sidebar Header Icons */
+.sidebar-header-icons {
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    margin-bottom: 20px;
+}
+
+.sidebar-header-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.sidebar-header-title:hover {
+    background: rgba(102, 126, 234, 0.05);
+    color: #5a67d8;
+}
+
+.sidebar-header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.sidebar-header-icon-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    background: rgba(102, 126, 234, 0.05);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    color: #333;
+}
+
+.sidebar-header-icon-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.sidebar-header-icon-item svg {
+    font-size: 16px;
+    color: #667eea;
+    width: 16px;
+    height: 16px;
+}
+
+.sidebar-header-icon-item span {
+    font-weight: 500;
+}
+
+/* Divider */
+.sidebar-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(102, 126, 234, 0.2), transparent);
+    margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar-header-icons {
+        padding: 15px 10px;
+    }
+
+    .sidebar-header-icon-item {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .sidebar-header-icon-item svg {
+        font-size: 14px;
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Divider */
+.sidebar-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(102, 126, 234, 0.2), transparent);
+    margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar-header-icons {
+        padding: 15px 10px;
+    }
+
+    .sidebar-header-icon-item {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .sidebar-header-icon-item svg {
+        font-size: 14px;
+        width: 14px;
+        height: 14px;
+    }
+}

@@ -1,0 +1,184 @@
+/* manualInput.module.css */
+.container {
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: transparent;
+    box-shadow: none;
+}
+
+.yearInputContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.yearInputLabel {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-weight: bold;
+    gap: 5px;
+    width: 150px;
+}
+
+.yearInput {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.yearCheckbox {
+    width: 18px;
+    height: 18px;
+    transform: scale(1.2);
+    margin-top: 20px;
+}
+
+.generateTableButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    /* Ngăn nút bấm xuống dòng */
+}
+
+.generateTableButton:hover {
+    background-color: #367c39;
+}
+
+.submitButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.submitButton:hover {
+    background-color: #0056b3;
+}
+
+.handsontableContainer {
+    margin-top: 30px;
+}
+
+
+
+
+
+.warning {
+    color: orange;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.customColumnNameInput {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #007bff;
+    margin-top: 20px;
+}
+
+:global(.handsontable-container) {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+/* Ghi đè style cho bảng Handsontable */
+:global(.handsontable-container .ht_master .htCore) {
+    font-size: 14px !important;
+    background-color: #f9f9f9 !important;
+    max-height: 50vh !important;
+}
+
+:global(.handsontable-container .ht_master th) {
+    background-color: #1976d2 !important;
+    color: #fff !important;
+    padding: 1px !important;
+    text-align: center !important;
+}
+
+:global(.handsontable-container .ht_master td) {
+    padding: 8px !important;
+    border: 1px solid #ccc !important;
+    text-align: center !important;
+}
+
+.dropdownContainer {
+    margin: 0;
+    display: block;
+}
+
+/* Fix datalist dropdown position - ensure it appears below input */
+/* Note: Browser controls datalist position, but we can ensure container has space */
+.container :global(input[list]) {
+    position: relative;
+}
+
+/* Ensure metadata section has enough space for dropdown */
+.container :global(.metadata-section) {
+    padding-bottom: 200px;
+    margin-bottom: 200px;
+}
+
+.dropdownLabel {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.dropdownSelect {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    font-size: 1rem;
+    color: #007bff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Disabled button state */
+.submitButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.submitButton:disabled:hover {
+    background-color: #6c757d;
+}

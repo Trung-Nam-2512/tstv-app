@@ -1,0 +1,24 @@
+.js-plotly-plot {
+    max-width: 550px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 145px;
+    /* display: flex; */
+
+}
+
+.Plot {
+    max-width: 550px;
+    align-items: center;
+    margin: auto;
+    display: inline-block;
+}
+
+.loading {
+    margin-top: 300px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}

@@ -1,0 +1,267 @@
+/* Annual Statistics Modern Styles */
+.main-stats-year {
+    padding: 2rem;
+    width: 100%;
+}
+
+/* Table Styles */
+.modern-table {
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+
+.modern-table th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+.modern-table th .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.modern-table td {
+    padding: 1.2rem;
+    border: none;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    vertical-align: middle;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.modern-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table-row-hover:hover {
+    background: rgba(102, 126, 234, 0.05);
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Year Badge */
+.year-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+}
+
+/* Cell Value Styles */
+.min-cell {
+    color: #dc3545;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.max-cell {
+    color: #28a745;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.mean-cell {
+    color: #007bff;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.sum-cell {
+    color: #6f42c1;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Card Styles */
+.modern-card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.modern-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.modern-card .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.modern-card .card-body {
+    padding: 0;
+}
+
+/* Table Responsive */
+.table-responsive {
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    font-size: 2rem;
+    color: #667eea;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-stats-year {
+        padding: 1rem;
+    }
+
+    .modern-table th {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .modern-table td {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .modern-card .card-header {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .min-cell,
+    .max-cell,
+    .mean-cell,
+    .sum-cell {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-stats-year {
+        padding: 0.5rem;
+    }
+
+    .modern-table th {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .modern-table td {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .modern-card .card-header {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .min-cell,
+    .max-cell,
+    .mean-cell,
+    .sum-cell {
+        font-size: 0.9rem;
+    }
+
+    .year-badge {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Alert Styles */
+.alert {
+    border-radius: 15px;
+    border: none;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #ffd93d 0%, #f6c23e 100%);
+    color: #856404;
+}
+
+/* Hover Effects */
+.modern-table tbody tr:hover .year-badge {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.modern-table tbody tr:hover .min-cell,
+.modern-table tbody tr:hover .max-cell,
+.modern-table tbody tr:hover .mean-cell,
+.modern-table tbody tr:hover .sum-cell {
+    transform: scale(1.05);
+}
+
+/* Custom Scrollbar */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
