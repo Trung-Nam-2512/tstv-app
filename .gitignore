@@ -75,6 +75,10 @@ dist/
 # Docker
 .dockerignore
 
+# Firebase config
+frontend/.firebaserc
+frontend/frontend.conf
+
 
 
 
