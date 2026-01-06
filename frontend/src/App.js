@@ -51,44 +51,44 @@ const AppContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Map URL paths to sections
+  // Map URL paths to sections (English routes)
   const pathToSection = {
-    '/': 'tai-len-file',
-    '/tai-len-file': 'tai-len-file',
-    '/nhap-du-lieu': 'nhap-du-lieu',
-    '/xem-thong-ke': 'xem-thong-ke',
-    '/du-lieu-api': 'du-lieu-api',
-    '/phan-tich-mua': 'phan-tich-mua',
-    '/ket-qua': 'ket-qua',
-    '/bieu-do-qqpp': 'bieu-do-qqpp',
-    '/chi-so-phan-tich': 'chi-so-phan-tich',
-    '/ket-qua-mo-hinh': 'ket-qua-mo-hinh',
-    '/phan-tich-dong-chay': 'phan-tich-dong-chay'
+    '/': 'upload-file',
+    '/upload-file': 'upload-file',
+    '/manual-input': 'manual-input',
+    '/statistics': 'statistics',
+    '/api-data': 'api-data',
+    '/rainfall-analysis': 'rainfall-analysis',
+    '/results': 'results',
+    '/qq-pp-plot': 'qq-pp-plot',
+    '/analysis-indices': 'analysis-indices',
+    '/model-results': 'model-results',
+    '/flow-analysis': 'flow-analysis'
   };
 
   const sectionToPath = {
-    'tai-len-file': '/tai-len-file',
-    'nhap-du-lieu': '/nhap-du-lieu',
-    'xem-thong-ke': '/xem-thong-ke',
-    'du-lieu-api': '/du-lieu-api',
-    'phan-tich-mua': '/phan-tich-mua',
-    'ket-qua': '/ket-qua',
-    'bieu-do-qqpp': '/bieu-do-qqpp',
-    'chi-so-phan-tich': '/chi-so-phan-tich',
-    'ket-qua-mo-hinh': '/ket-qua-mo-hinh',
-    'phan-tich-dong-chay': '/phan-tich-dong-chay'
+    'upload-file': '/upload-file',
+    'manual-input': '/manual-input',
+    'statistics': '/statistics',
+    'api-data': '/api-data',
+    'rainfall-analysis': '/rainfall-analysis',
+    'results': '/results',
+    'qq-pp-plot': '/qq-pp-plot',
+    'analysis-indices': '/analysis-indices',
+    'model-results': '/model-results',
+    'flow-analysis': '/flow-analysis'
   };
 
-  const [activeSection, setActiveSection] = useState(pathToSection[location.pathname] || 'tai-len-file');
+  const [activeSection, setActiveSection] = useState(pathToSection[location.pathname] || 'upload-file');
 
   // Update activeSection when URL changes
   useEffect(() => {
-    const section = pathToSection[location.pathname] || 'tai-len-file';
+    const section = pathToSection[location.pathname] || 'upload-file';
     setActiveSection(section);
     
-    // Set fetch flag khi navigate đến /ket-qua (để components biết có data)
+    // Set fetch flag khi navigate đến /results (để components biết có data)
     // Không auto-refresh (data từ cache), chỉ set flag
-    if (location.pathname === '/ket-qua') {
+    if (location.pathname === '/results') {
       setFetch(true);
     }
   }, [location.pathname]);
@@ -104,7 +104,7 @@ const AppContent = () => {
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
-    const path = sectionToPath[section] || '/tai-len-file';
+    const path = sectionToPath[section] || '/upload-file';
     navigate(path);
   };
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile sidebar
@@ -216,7 +216,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/tai-len-file" element={
+                <Route path="/upload-file" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className="row-input">
@@ -230,7 +230,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/nhap-du-lieu" element={
+                <Route path="/manual-input" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className="row-input">
@@ -241,7 +241,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/xem-thong-ke" element={
+                <Route path="/statistics" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className='row-stats'>
@@ -256,7 +256,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/du-lieu-api" element={
+                <Route path="/api-data" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className='row-stats'>
@@ -267,7 +267,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/ket-qua" element={
+                <Route path="/results" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className='row-select-model'>
@@ -288,7 +288,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/bieu-do-qqpp" element={
+                <Route path="/qq-pp-plot" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className='pp-qq-chart'>
@@ -299,7 +299,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/chi-so-phan-tich" element={
+                <Route path="/analysis-indices" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className='analyst-model'>
@@ -311,7 +311,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/ket-qua-mo-hinh" element={
+                <Route path="/model-results" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className='row-result'>
@@ -322,7 +322,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/phan-tich-dong-chay" element={
+                <Route path="/flow-analysis" element={
                   <Card className='section-card'>
                     <Card.Body>
                       <Row className='row-result2'>
@@ -333,7 +333,7 @@ const AppContent = () => {
                     </Card.Body>
                   </Card>
                 } />
-                <Route path="/phan-tich-mua" element={<RainfallAnalysis />} />
+                <Route path="/rainfall-analysis" element={<RainfallAnalysis />} />
               </Routes>
 
             </Col>

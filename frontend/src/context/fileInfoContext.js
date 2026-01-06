@@ -110,7 +110,7 @@ export function FileInfoProvider({ children }) {
                         lineStyle: 'solid',
                         lineWidth: 2
                     },
-                    activeSection: 'tai-len-file',
+                    activeSection: 'upload-file',
                     sidebarCollapsed: false,
                     lastUpdated: Date.now()
                 };

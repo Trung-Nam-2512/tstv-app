@@ -71,7 +71,7 @@ export const SessionProvider = ({ children }) => {
         },
         
         // UI state
-        activeSection: 'tai-len-file',
+        activeSection: 'upload-file',
         sidebarCollapsed: false,
         
         // Timestamp
@@ -253,7 +253,7 @@ export const SessionProvider = ({ children }) => {
                 lineStyle: 'solid',
                 lineWidth: 2
             },
-            activeSection: 'tai-len-file',
+            activeSection: 'upload-file',
             sidebarCollapsed: false,
             lastUpdated: Date.now()
         };

@@ -46,6 +46,37 @@ const getDistributionColor = (distributionName) => {
     return colorMap[distributionName] || '#d62728';
 };
 
+// Hàm format tham số phân bố cho legend
+const formatDistributionParams = (parameters) => {
+    if (!parameters) return '';
+    
+    const parts = [];
+    
+    // Location parameter
+    if (parameters.loc !== null && parameters.loc !== undefined) {
+        parts.push(`Location=${parameters.loc.toFixed(2)}`);
+    }
+    
+    // Scale parameter
+    if (parameters.scale !== null && parameters.scale !== undefined) {
+        parts.push(`Scale=${parameters.scale.toFixed(2)}`);
+    }
+    
+    // Shape parameter (có thể là số hoặc array)
+    if (parameters.shape !== null && parameters.shape !== undefined) {
+        if (Array.isArray(parameters.shape)) {
+            if (parameters.shape.length > 0) {
+                const shapeStr = parameters.shape.map(s => s.toFixed(2)).join(', ');
+                parts.push(`Shape=[${shapeStr}]`);
+            }
+        } else {
+            parts.push(`Shape=${parameters.shape.toFixed(2)}`);
+        }
+    }
+    
+    return parts.length > 0 ? parts.join(', ') : '';
+};
+
 // Custom scale: Mixed scale (log 0.01-10% + linear 20-99.99%)
 // FFC 2008 sử dụng log scale cho P từ 0.01% đến 10%, linear scale cho P từ 20% đến 99.99%
 // QUAN TRỌNG: Phải đảm bảo transition mượt mà giữa 10% và 20% để tránh gãy khúc
@@ -582,7 +613,8 @@ const D3FrequencyChart = ({ endpoint, dataUpdated }) => {
                 label: 'Số liệu thực đo',
                 marker: 'diamond',
                 color: '#ff0000',
-                stats: chartData.statistics
+                stats: chartData.statistics,
+                isDistribution: false
             });
         }
 
@@ -592,7 +624,8 @@ const D3FrequencyChart = ({ endpoint, dataUpdated }) => {
                 label: `Phân bố ${distributionName}`,
                 marker: 'line',
                 color: distributionColor,
-                stats: chartData.statistics
+                stats: chartData.statistics,
+                isDistribution: true
             });
         }
 
@@ -635,11 +668,16 @@ const D3FrequencyChart = ({ endpoint, dataUpdated }) => {
             }
 
             // Label với tham số thống kê (format như FFC 2008)
-            const stats = item.stats;
+            // Số liệu thực đo: hiển thị TB, Cv, Cs
+            // Phân bố: hiển thị tham số phân bố (location, scale, shape)
             let labelText;
-            if (stats) {
-                // Format: "Tên | TB=xxx.xx, Cv=x.xx, Cs=x.xx"
-                labelText = `${item.label} | TB=${stats.mean.toFixed(2)}, Cv=${stats.cv.toFixed(2)}, Cs=${stats.cs.toFixed(2)}`;
+            if (item.isDistribution && chartData.parameters) {
+                // Phân bố: hiển thị tham số phân bố
+                const paramsStr = formatDistributionParams(chartData.parameters);
+                labelText = paramsStr ? `${item.label} | ${paramsStr}` : item.label;
+            } else if (item.stats) {
+                // Số liệu thực đo: hiển thị TB, Cv, Cs
+                labelText = `${item.label} | TB=${item.stats.mean.toFixed(2)}, Cv=${item.stats.cv.toFixed(2)}, Cs=${item.stats.cs.toFixed(2)}`;
             } else {
                 labelText = item.label;
             }

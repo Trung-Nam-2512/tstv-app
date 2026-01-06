@@ -246,7 +246,7 @@ const RainfallAnalysis = () => {
         setIsPrecomputing(false);
         // Small delay để đảm bảo cache đã được set
         setTimeout(() => {
-          navigate('/ket-qua');
+          navigate('/results');
         }, 100);
       };
       

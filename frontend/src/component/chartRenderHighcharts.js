@@ -622,10 +622,38 @@ const HighchartsFrequencyChart = ({ endpoint, dataUpdated }) => {
         // Backend đã tạo 3000 điểm → line plot sẽ mượt hoàn toàn
         // Highcharts line với nhiều điểm sẽ mượt như matplotlib semilogx
 
+        // Hàm format tham số phân bố
+        const formatDistributionParams = (parameters) => {
+            if (!parameters) return '';
+            const parts = [];
+            if (parameters.loc !== null && parameters.loc !== undefined) {
+                parts.push(`Location=${parameters.loc.toFixed(2)}`);
+            }
+            if (parameters.scale !== null && parameters.scale !== undefined) {
+                parts.push(`Scale=${parameters.scale.toFixed(2)}`);
+            }
+            if (parameters.shape !== null && parameters.shape !== undefined) {
+                if (Array.isArray(parameters.shape)) {
+                    if (parameters.shape.length > 0) {
+                        const shapeStr = parameters.shape.map(s => s.toFixed(2)).join(', ');
+                        parts.push(`Shape=[${shapeStr}]`);
+                    }
+                } else {
+                    parts.push(`Shape=${parameters.shape.toFixed(2)}`);
+                }
+            }
+            return parts.length > 0 ? parts.join(', ') : '';
+        };
+
         series.push({
-            name: chartData.statistics
-                ? `Phân bố ${distributionName} | TB=${chartData.statistics.mean.toFixed(2)}, Cv=${chartData.statistics.cv.toFixed(2)}, Cs=${chartData.statistics.cs.toFixed(2)}`
-                : `Phân bố ${distributionName}`,
+            name: (() => {
+                // Phân bố: hiển thị tham số phân bố (location, scale, shape)
+                if (chartData.parameters) {
+                    const paramsStr = formatDistributionParams(chartData.parameters);
+                    return paramsStr ? `Phân bố ${distributionName} | ${paramsStr}` : `Phân bố ${distributionName}`;
+                }
+                return `Phân bố ${distributionName}`;
+            })(),
             type: 'line', // LINE như code Python mẫu (semilogx) - mượt với nhiều điểm
             data: theoreticalData, // Backend đã tạo 3000 điểm → mượt hoàn toàn
             color: getDistributionColor(distributionName),
@@ -708,7 +736,7 @@ const HighchartsFrequencyChart = ({ endpoint, dataUpdated }) => {
         series.push({
             name: chartData.statistics
                 ? `Số liệu thực đo | TB=${chartData.statistics.mean.toFixed(2)}, Cv=${chartData.statistics.cv.toFixed(2)}, Cs=${chartData.statistics.cs.toFixed(2)}`
-                : 'Số liệu thực đo',
+                : 'Số liệu thực đo', // Số liệu thực đo: luôn hiển thị TB, Cv, Cs
             type: 'scatter',
             data: empiricalData,
             color: '#ff0000', // Màu đỏ như FFC 2008

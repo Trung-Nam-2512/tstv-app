@@ -558,7 +558,31 @@ const CanvasFrequencyChart = ({ endpoint, dataUpdated }) => {
         ctx.lineWidth = 0.5;
         ctx.stroke();
 
+        // Hàm format tham số phân bố
+        const formatDistributionParams = (parameters) => {
+            if (!parameters) return '';
+            const parts = [];
+            if (parameters.loc !== null && parameters.loc !== undefined) {
+                parts.push(`Location=${parameters.loc.toFixed(2)}`);
+            }
+            if (parameters.scale !== null && parameters.scale !== undefined) {
+                parts.push(`Scale=${parameters.scale.toFixed(2)}`);
+            }
+            if (parameters.shape !== null && parameters.shape !== undefined) {
+                if (Array.isArray(parameters.shape)) {
+                    if (parameters.shape.length > 0) {
+                        const shapeStr = parameters.shape.map(s => s.toFixed(2)).join(', ');
+                        parts.push(`Shape=[${shapeStr}]`);
+                    }
+                } else {
+                    parts.push(`Shape=${parameters.shape.toFixed(2)}`);
+                }
+            }
+            return parts.length > 0 ? parts.join(', ') : '';
+        };
+
         ctx.fillStyle = '#333';
+        // Số liệu thực đo: hiển thị TB, Cv, Cs
         ctx.fillText(
             chartData.statistics
                 ? `Số liệu thực đo | TB=${chartData.statistics.mean.toFixed(2)}, Cv=${chartData.statistics.cv.toFixed(2)}, Cs=${chartData.statistics.cs.toFixed(2)}`
@@ -575,12 +599,12 @@ const CanvasFrequencyChart = ({ endpoint, dataUpdated }) => {
         ctx.stroke();
 
         ctx.fillStyle = '#333';
-        ctx.fillText(
-            chartData.statistics
-                ? `Phân bố ${distributionName} | TB=${chartData.statistics.mean.toFixed(2)}, Cv=${chartData.statistics.cv.toFixed(2)}, Cs=${chartData.statistics.cs.toFixed(2)}`
-                : `Phân bố ${distributionName}`,
-            -245, 30
-        );
+        // Phân bố: hiển thị tham số phân bố (location, scale, shape)
+        const distParamsStr = chartData.parameters ? formatDistributionParams(chartData.parameters) : '';
+        const distLabel = distParamsStr
+            ? `Phân bố ${distributionName} | ${distParamsStr}`
+            : `Phân bố ${distributionName}`;
+        ctx.fillText(distLabel, -245, 30);
 
         ctx.restore();
 

@@ -284,9 +284,31 @@ const PlotlyFrequencyChart = ({ endpoint, dataUpdated }) => {
         y: theoreticalY, // Dùng TẤT CẢ điểm từ backend (~8000 điểm)
         type: 'scatter',
         mode: 'lines',
-        name: chartData.statistics
-            ? `Phân bố ${distributionName} | TB=${chartData.statistics.mean.toFixed(2)}, Cv=${chartData.statistics.cv.toFixed(2)}, Cs=${chartData.statistics.cs.toFixed(2)}`
-            : `Phân bố ${distributionName}`,
+        name: (() => {
+            // Phân bố: hiển thị tham số phân bố (location, scale, shape)
+            if (chartData.parameters) {
+                const parts = [];
+                if (chartData.parameters.loc !== null && chartData.parameters.loc !== undefined) {
+                    parts.push(`Location=${chartData.parameters.loc.toFixed(2)}`);
+                }
+                if (chartData.parameters.scale !== null && chartData.parameters.scale !== undefined) {
+                    parts.push(`Scale=${chartData.parameters.scale.toFixed(2)}`);
+                }
+                if (chartData.parameters.shape !== null && chartData.parameters.shape !== undefined) {
+                    if (Array.isArray(chartData.parameters.shape)) {
+                        if (chartData.parameters.shape.length > 0) {
+                            const shapeStr = chartData.parameters.shape.map(s => s.toFixed(2)).join(', ');
+                            parts.push(`Shape=[${shapeStr}]`);
+                        }
+                    } else {
+                        parts.push(`Shape=${chartData.parameters.shape.toFixed(2)}`);
+                    }
+                }
+                const paramsStr = parts.length > 0 ? parts.join(', ') : '';
+                return paramsStr ? `Phân bố ${distributionName} | ${paramsStr}` : `Phân bố ${distributionName}`;
+            }
+            return `Phân bố ${distributionName}`;
+        })(),
         line: {
             color: distributionColor,
             width: 2,
@@ -394,7 +416,7 @@ const PlotlyFrequencyChart = ({ endpoint, dataUpdated }) => {
         mode: 'markers',
         name: chartData.statistics
             ? `Số liệu thực đo | TB=${chartData.statistics.mean.toFixed(2)}, Cv=${chartData.statistics.cv.toFixed(2)}, Cs=${chartData.statistics.cs.toFixed(2)}`
-            : 'Số liệu thực đo',
+            : 'Số liệu thực đo', // Số liệu thực đo: luôn hiển thị TB, Cv, Cs
         marker: {
             color: '#ff0000', // Màu đỏ như FFC 2008
             size: 8,
